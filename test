@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
-/**
- *
- * @author Igor
- */
+
 public class jogodavelha {
 
     public static void main(String[] args) {  
@@ -18,8 +15,8 @@ public class jogodavelha {
         boolean game = true;
         //Simbolo da vez, comecando o jogo com X
         char simboloAtual = 'X';
-        //
-        int cont = 0;
+        // 
+        int p =0;
         int vitoria = 0;
         Scanner scan = new Scanner(System.in);
 
@@ -27,7 +24,7 @@ public class jogodavelha {
         while (game) {
             
             desenhaJogo(velha); 
-            vitoria = verificarvencedor(velha,vitoria);
+            vitoria = verificarvencedor(velha,p);
             switch (vitoria) {
                 case 1: 
                         System.out.printf("Jogador X venceu. \n");
@@ -103,20 +100,22 @@ public class jogodavelha {
             }
         }
     }
-    public static int verificarvencedor(campo[][]velha, int vitoria) {
-       for (int cont = 0; cont < 9; cont++) {
-            
+    public static int verificarvencedor(campo[][]velha, int p[]) {
+        int cont=0;
+        for (int i = 0; i < 9; i++) {
+           cont++; 
+        }
         // todas as posicoes de X
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-             if((velha[0][0].getSimbolo() == 'X' && velha[0][1].getSimbolo() == 'X' && velha[0][2].getSimbolo() == 'X')
-             || (velha[1][0].getSimbolo() == 'X' && velha[1][1].getSimbolo() == 'X' && velha[1][2].getSimbolo() == 'X')
-             || (velha[2][0].getSimbolo() == 'X' && velha[2][1].getSimbolo() == 'X' && velha[2][2].getSimbolo() == 'X')
-             || (velha[1][0].getSimbolo() == 'X' && velha[1][1].getSimbolo() == 'X' && velha[1][2].getSimbolo() == 'X')
-             || (velha[0][0].getSimbolo() == 'X' && velha[0][1].getSimbolo() == 'X' && velha[0][2].getSimbolo() == 'X')
-             || (velha[2][0].getSimbolo() == 'X' && velha[2][1].getSimbolo() == 'X' && velha[2][2].getSimbolo() == 'X')
-             || (velha[0][0].getSimbolo() == 'X' && velha[1][1].getSimbolo() == 'X' && velha[2][2].getSimbolo() == 'X')
-             || (velha[0][2].getSimbolo() == 'X' && velha[1][1].getSimbolo() == 'X' && velha[2][0].getSimbolo() == 'X'))
+             if((velha[p[0]][p[0]].getSimbolo() == 'X' && velha[p[0]][p[1]].getSimbolo() == 'X' && velha[p[0]][p[2]].getSimbolo() == 'X')
+             || (velha[p[1]][p[0]].getSimbolo() == 'X' && velha[p[1]][p[1]].getSimbolo() == 'X' && velha[p[1]][p[2]].getSimbolo() == 'X')
+             || (velha[p[2]][p[0]].getSimbolo() == 'X' && velha[p[2]][p[1]].getSimbolo() == 'X' && velha[p[2]][p[2]].getSimbolo() == 'X')
+             || (velha[p[1]][p[0]].getSimbolo() == 'X' && velha[p[1]][p[1]].getSimbolo() == 'X' && velha[p[1]][p[2]].getSimbolo() == 'X')
+             || (velha[p[0]][p[0]].getSimbolo() == 'X' && velha[p[0]][p[1]].getSimbolo() == 'X' && velha[p[0]][p[2]].getSimbolo() == 'X')
+             || (velha[p[2]][p[0]].getSimbolo() == 'X' && velha[p[2]][p[1]].getSimbolo() == 'X' && velha[p[2]][p[2]].getSimbolo() == 'X')
+             || (velha[p[0]][p[0]].getSimbolo() == 'X' && velha[p[1]][p[1]].getSimbolo() == 'X' && velha[p[2]][p[2]].getSimbolo() == 'X')
+             || (velha[p[0]][p[2]].getSimbolo() == 'X' && velha[p[1]][p[1]].getSimbolo() == 'X' && velha[p[2]][p[0]].getSimbolo() == 'X'))
              {              
                  return 1;  
             // todas as posicoes de O
@@ -130,14 +129,14 @@ public class jogodavelha {
              || (velha[0][2].getSimbolo() == 'O' && velha[1][1].getSimbolo() == 'O' && velha[2][0].getSimbolo() == 'O')){
                return 2;
           // empate
-           }else if(cont >= 9){
+           }else if( cont >= 9){
                
                return 3;
            }
             
         }
        }      
-    }
+    
         return 0;
    }
  
